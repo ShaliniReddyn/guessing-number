@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <script>
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let remainingTrials = 3;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById("guess").value);
+            remainingTrials--;
+
+            if (userGuess === randomNumber) {
+                alert("Congratulations! You guessed the correct number: " + randomNumber);
+                resetGame();
+            } else if (remainingTrials === 0) {
+                alert("Sorry, you've run out of trials. The correct number was: " + randomNumber);
+                resetGame();
+            } else {
+                alert("Try again! You have " + remainingTrials + " trial(s) left.");
+            }
+        }
+
+        function resetGame() {
+            // Generate a new random number and reset the remaining trials
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            remainingTrials = 3;
+            document.getElementById("guess").value = "";
+        }
+    </script>
+</head>
+<body style="background-image: url(https://www.bing.com/th/id/OGC.4ad1458fc09f4b424659ec8652284a9e?pid=1.7&rurl=https%3a%2f%2fmedia1.tenor.com%2fimages%2f4ad1458fc09f4b424659ec8652284a9e%2ftenor.gif%3fitemid%3d8229907&ehk=ssekIHd4DMn8pkJ2kiFUVFOAnj7%2fDMTEyNW%2fnZDsFos%3d);background-size: cover;animation: forwards;">
+    <center>
+    <h1>Guess the Number Game</h1>
+    <p>I'm thinking of a number between 1 and 100. You have 3 trials to guess it.</p>
+    <input type="number" id="guess" placeholder="Enter your guess"><br><br>
+    <button onclick="checkGuess()">Check Guess</button>
+</center>
+</body>
+</html>
